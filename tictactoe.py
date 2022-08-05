@@ -38,32 +38,23 @@ def inRange(x, y, h, w):
 
 
 class Solution:
-    def tic_tac_toe(self, a, b):
-        # type a: int
-        # type b: int
-        # return type: int
-        x = [-1, 1, -1, 1, 0, 0, 1, -1]
-        y = [-1, 1, 1, -1, 1, -1, 0, 0]
+    def tic_tac_toe(self, row, col):
+        key = [
+            [0, 3, 2, 7, 9, 0, 4, 0, 5],
+            [3, 0, 1, 0, 8, 0, 0, 5, 0],
+            [2, 1, 0, 0, 7, 9, 5, 0, 6],
+            [7, 0, 0, 0, 6, 5, 1, 0, 0],
+            [9, 8, 7, 6, 0, 4, 3, 2, 1],
+            [0, 0, 9, 5, 4, 0, 0, 0, 3],
+            [4, 0, 5, 1, 3, 0, 0, 9, 8],
+            [0, 5, 0, 0, 2, 0, 9, 0, 7],
+            [5, 0, 6, 0, 1, 3, 8, 7, 0],
+        ]
 
-        board = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
-
-        for i in range(3):
-            for j in range(3):
-                if board[i][j] == a or board[i][j] == b:
-                    continue
-                for k in range(8):
-                    # w = board[i + x[k]][j + y[k]]
-                    # w2 = board[i + 2 * x[k]][j + 2 * y[k]]
-                    if inRange(i + x[k], j + y[k], 3, 3) and (
-                        board[i + x[k]][j + y[k]] == a or board[i + x[k]][j + y[k]] == b
-                    ):
-                        if inRange(i + 2 * x[k], j + 2 * y[k], 3, 3) and (
-                            board[i + 2 * x[k]][j + 2 * y[k]] == a
-                            or board[i + 2 * x[k]][j + 2 * y[k]] == b
-                        ):
-                            return board[i][j]
-
-        return "invalid"
+        if row < 10 and row > 0 and col < 10 and col > 0:
+            return key[row - 1][col - 1]
+        else:
+            return "Invalid"
 
 
 def main():
